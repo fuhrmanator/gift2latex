@@ -1,0 +1,27 @@
+{
+  "name": "gift2latex",
+  "version": "0.0.1",
+  "description": "Convert gift to latex using exam class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuhrmanator/gift2latex.git"
+  },
+  "author": "Christopher (Cris)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fuhrmanator/gift2latex/issues"
+  },
+  "homepage": "https://github.com/fuhrmanator/gift2latex#readme",
+  "devDependencies": {
+    "@types/yargs": "^16.0.3",
+    "jest": "^27.0.6"
+  },
+  "dependencies": {
+    "gift-pegjs": "^0.2.0",
+    "yargs": "^16.2.0"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules
+# latex environment temp files
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
+*.synctex.gz
+*.pdf
