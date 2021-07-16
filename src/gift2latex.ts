@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 import { parse, GIFTQuestion, QuestionType } from "gift-pegjs";
-import yargs, { Argv } from "yargs";
+import yargs, { Argv, exit } from "yargs";
 import { readFileSync } from 'fs';
 
 const argv = yargs
@@ -43,3 +45,4 @@ if (argv.lyxexam)
     console.log("\\end{myquestions}"); else 
     console.log("\\end{questions}")
 
+process.exit(0);
