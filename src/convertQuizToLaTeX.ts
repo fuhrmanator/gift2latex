@@ -15,7 +15,7 @@ export function convertQuizToLaTeX(quiz: GIFTQuestion[], points: string, shuffle
                 let useMarkdown = convertMarkdown && (question.stem.format === 'markdown')
                 result.push(`\\${questionTag}[${questionPoints}]`)
                 if (useMarkdown) result.push('\\begin{markdown}')
-                result.push(question.stem.text);
+                result.push(question.stem.text.replace(/\\n/g, os.EOL));
                 if (useMarkdown) result.push('\\end{markdown}')
                 result.push("\\begin{choices}");
                 // https://stackoverflow.com/a/46545530/1168342
@@ -25,7 +25,7 @@ export function convertQuizToLaTeX(quiz: GIFTQuestion[], points: string, shuffle
                 for (let choice of choices) {
                     result.push("\\" + (choice.isCorrect ? "CorrectChoice" : "choice"))
                     if (useMarkdown) result.push('\\begin{markdown}')
-                    result.push(choice.text.text);
+                    result.push(choice.text.text.replace(/\\n/g, os.EOL));
                     if (useMarkdown) result.push('\\end{markdown}')
                 }
                 result.push("\\end{choices}");
