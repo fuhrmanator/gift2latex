@@ -12,7 +12,9 @@ const argv = yargs
     .alias('s', 'shuffle')
     .alias('p', 'points')
     .alias('L', 'lyxexam')
+    .alias('M', 'markdown')
     .describe('L', 'generate child document (LaTeX) for use in https://github.com/fuhrmanator/lyx-layouts')
+    .describe('M', 'format markdown with https://www.ctan.org/pkg/markdown')
     .describe('s', 'shuffle multiple-choice answers')
     .nargs('p', 1)
     .describe('p', 'set the number of points for each question')
@@ -21,7 +23,7 @@ const argv = yargs
 try {
     const questions = readFileSync(argv.input as string, 'utf8');
     const quiz: GIFTQuestion[] = parse(questions)
-    console.log(convertQuizToLaTeX(quiz, argv.points as string, argv.shuffle as boolean, argv.lyxexam as boolean))
+    console.log(convertQuizToLaTeX(quiz, argv.points as string, argv.shuffle as boolean, argv.lyxexam as boolean, argv.markdown as boolean))
 
 } catch (error) {
     console.error("" + error)

@@ -1,7 +1,7 @@
 import * as os from 'os'
-import { GIFTQuestion } from "gift-pegjs";
+import { GIFTQuestion, TextFormat } from "gift-pegjs";
 
-export function convertQuizToLaTeX(quiz: GIFTQuestion[], points: string, shuffle: boolean, isLyX: boolean): string {
+export function convertQuizToLaTeX(quiz: GIFTQuestion[], points: string, shuffle: boolean, isLyX: boolean, convertMarkdown: boolean): string {
     const questionsTag = (isLyX ? "myquestions" : "questions");
     const questionTag = (isLyX ? "myquestion" : "question");
     const questionPoints = (points ? points : "1");
@@ -12,15 +12,21 @@ export function convertQuizToLaTeX(quiz: GIFTQuestion[], points: string, shuffle
     for (let question of quiz) {
         switch (question.type) {
             case "MC":
-                result.push(`\\${questionTag}[${questionPoints}]`);
+                let useMarkdown = convertMarkdown && (question.stem.format === 'markdown')
+                result.push(`\\${questionTag}[${questionPoints}]`)
+                if (useMarkdown) result.push('\\begin{markdown}')
                 result.push(question.stem.text);
+                if (useMarkdown) result.push('\\end{markdown}')
                 result.push("\\begin{choices}");
                 // https://stackoverflow.com/a/46545530/1168342
                 let choices = shuffle ? question.choices.map((a) => ({ sort: Math.random(), value: a }))
                     .sort((a, b) => a.sort - b.sort)
                     .map((a) => a.value) : question.choices;
                 for (let choice of choices) {
-                    result.push("\\" + (choice.isCorrect ? "CorrectChoice " : "choice ") + choice.text.text);
+                    result.push("\\" + (choice.isCorrect ? "CorrectChoice" : "choice"))
+                    if (useMarkdown) result.push('\\begin{markdown}')
+                    result.push(choice.text.text);
+                    if (useMarkdown) result.push('\\end{markdown}')
                 }
                 result.push("\\end{choices}");
                 break;
