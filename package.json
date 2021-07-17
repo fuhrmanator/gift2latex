@@ -1,6 +1,6 @@
 {
   "name": "gift2latex",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Convert gift questions to latex using exam class",
   "main": "index.js",
   "scripts": {
