@@ -1,15 +1,23 @@
 ## Installation
 
-`npm install`
-
-Tested with `ts-node` so you may need to install that globally.
+`npm install -g git2latex`
 
 ## Usage
 
-> Note that -s is the shuffle option for MCQ
-
 ```bash
-ts-node src/gift2latex.ts -i sampleQuiz.gift -points 2 -s > questions_include.tex
-```
+$ gift2latex --help
+Options:
+      --help      Show help                                            [boolean]
+      --version   Show version number                                  [boolean]
+  -L, --lyxexam   generate child document (LaTeX) for use in
+                  https://github.com/fuhrmanator/lyx-layouts
+  -M, --markdown  format markdown with https://www.ctan.org/pkg/markdown
+  -s, --shuffle   shuffle multiple-choice answers
+  -p, --points    set the number of points for each question
+  -i, --input                                                         [required]
 
-This pipes the Exam style questions to a file that is included in a main document, e.g., `SampleQuiz.tex`.
+Examples:
+  gift2latex.js -i a.gift -s -p >           converts GIFT questions file to
+  a_include.tex                             LaTeX for inclusion in exam-class
+                                            document
+```
