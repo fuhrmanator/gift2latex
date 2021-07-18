@@ -4,7 +4,7 @@
 
 ## Usage
 
-```bash
+```
 $ gift2latex --help
 Options:
       --help      Show help                                            [boolean]
