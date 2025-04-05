@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/gift2latex.ts",
-    "test": "jest --colors"
+    "test": "jest --colors",
+    "build": "tsc --outDir dist"
   },
   "bin": {
     "gift2latex": "dist/gift2latex.js"
@@ -15,7 +16,8 @@
     "gift",
     "lyx",
     "exam",
-    "questions"
+    "questions",
+    "quarto"
   ],
   "repository": {
     "type": "git",
